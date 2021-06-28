@@ -2,7 +2,7 @@
 from random import randint
 numero = randint(0, 10)
 chute = 1
-palpite = int(input('Digite um número: '))
+palpite = int(input('Digite um número de 0 a 10: '))
 while numero != palpite:
     if palpite != numero:
         chute = chute + 1
