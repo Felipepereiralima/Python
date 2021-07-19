@@ -21,10 +21,9 @@ if pergunta0 == 'S':
         if pergunta2 == 'S':
             print('Você entra na caverna e de repente...')
             sleep(0)
-            saudeMonstro = 5
+            saudeMonstro = 10
             saudePlayer = 10
-            #FAZER COM O WHILE OU COM O FOR
-            while True:
+            while saudeMonstro != 0 or saudePlayer != 0:
                 pergunta3 = str(input('Você encontra um ogro com um tesouro deseja abatê-lo [SIM/NÃO]? ')).strip().upper()[0]
                 sleep(0)
                 numeroDado = randint(1, 6)
@@ -32,24 +31,28 @@ if pergunta0 == 'S':
                 #O ATAQUE DO PLAYER
                 if pergunta3 == 'S' and numeroDado == 1 or numeroDado == 2:
                     print('O seu ataque errou!')
-                elif pergunta3 == 'S' and numeroDado == 3 or numeroDado == 4:
+                if pergunta3 == 'S' and numeroDado == 3 or numeroDado == 4:
                     print('O seu ataque acertou! Tirou 1 de dano.')
-                    saudeMonstro -= 1
-                elif pergunta3 == 'S' and numeroDado == 5 or numeroDado == 6:
+                    saudeMonstro = saudeMonstro - 1
+                if pergunta3 == 'S' and numeroDado == 5 or numeroDado == 6:
                     print('O seu ataque acertou! Tirou 2 de dano.')
-                    saudeMonstro -= 2
+                    saudeMonstro = saudeMonstro - 2
+                if pergunta3 == 'S' and saudeMonstro == 0:
+                    print('Parabéns você matou o ogro! Ganhou o tesouro!')
                 #O ATAQUE DO OGRO
                 if pergunta3 == 'S' and numeroDado2 == 1 or numeroDado2 == 2:
                     print('O ataque do ogro errou!')
-                elif pergunta3 == 'S' and numeroDado2 == 3 or numeroDado2 == 4:
+                if pergunta3 == 'S' and numeroDado2 == 3 or numeroDado2 == 4:
                     print('O ataque do ogro acertou! Tirou 1 de dano.')
-                    saudePlayer -= 1
-                elif pergunta3 == 'S' and numeroDado2 == 5 or numeroDado2 == 6:
+                    saudePlayer = saudePlayer - 1
+                if pergunta3 == 'S' and numeroDado2 == 5 or numeroDado2 == 6:
                     print('O ogro acertou! Tirou 2 de dano.')
-                    saudePlayer -= 2
-                else:
-                    print('Você deixa o ogro pra lá e continua sua jornada para encontrar alimento.')
-                    break
+                    saudePlayer = saudePlayer - 2
+                if pergunta3 == 'S' and saudePlayer == 0:
+                    print('GAME OVER, você morreu para o ogro!')
+                #RESOLVER O ELSE...
+            else:
+                print('Você deixa o ogro pra lá e continua sua jornada para encontrar alimento.')
                 # CONTINUAR DAQUI...
         else:
             print('Você prossegue adiante pois tem medo de cavernas.')
